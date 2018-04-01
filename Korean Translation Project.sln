@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Glyph Counter", "Glyph Counter\Glyph Counter.vcxproj", "{230DCA1E-9241-47C2-82BA-CC25AA320523}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Font Generator", "Font Generator\Font Generator.vcxproj", "{9CEE2622-F986-4F16-91B2-C8B0E1AE5581}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Translation Injector", "Translation Injector\Translation Injector.vcxproj", "{F63AC616-A6B9-4420-88DD-5943D1BA813F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{80BCA77F-B81C-4AF7-97CA-4A4CFD6E9A0A}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		Misc\menu addresses.txt = Misc\menu addresses.txt
+		Misc\project end-goals.txt = Misc\project end-goals.txt
+		README.md = README.md
+		Misc\reference code.txt = Misc\reference code.txt
+		Misc\special.png = Misc\special.png
+		Misc\standardized glyphs.txt = Misc\standardized glyphs.txt
+		Misc\String Table.xlsx = Misc\String Table.xlsx
+		Misc\to-do.txt = Misc\to-do.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{230DCA1E-9241-47C2-82BA-CC25AA320523}.Debug|x86.ActiveCfg = Debug|Win32
+		{230DCA1E-9241-47C2-82BA-CC25AA320523}.Debug|x86.Build.0 = Debug|Win32
+		{230DCA1E-9241-47C2-82BA-CC25AA320523}.Release|x86.ActiveCfg = Debug|Win32
+		{230DCA1E-9241-47C2-82BA-CC25AA320523}.Release|x86.Build.0 = Debug|Win32
+		{9CEE2622-F986-4F16-91B2-C8B0E1AE5581}.Debug|x86.ActiveCfg = Debug|Win32
+		{9CEE2622-F986-4F16-91B2-C8B0E1AE5581}.Debug|x86.Build.0 = Debug|Win32
+		{9CEE2622-F986-4F16-91B2-C8B0E1AE5581}.Release|x86.ActiveCfg = Debug|Win32
+		{9CEE2622-F986-4F16-91B2-C8B0E1AE5581}.Release|x86.Build.0 = Debug|Win32
+		{F63AC616-A6B9-4420-88DD-5943D1BA813F}.Debug|x86.ActiveCfg = Debug|Win32
+		{F63AC616-A6B9-4420-88DD-5943D1BA813F}.Debug|x86.Build.0 = Debug|Win32
+		{F63AC616-A6B9-4420-88DD-5943D1BA813F}.Release|x86.ActiveCfg = Debug|Win32
+		{F63AC616-A6B9-4420-88DD-5943D1BA813F}.Release|x86.Build.0 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA0AE426-AD70-4E55-AB24-F78087838283}
+	EndGlobalSection
+EndGlobal

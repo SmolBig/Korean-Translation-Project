@@ -1,0 +1,9 @@
+
+https://github.com/SmolBig/alttp_vt_randomizer/blob/master/app/Support/Credits.php
+
+https://github.com/SmolBig/alttp_vt_randomizer/blob/master/app/Randomizer.php
+
+https://github.com/SmolBig/alttp_vt_randomizer/blob/master/app/Rom.php
+
+https://github.com/SmolBig/alttp_vt_randomizer/blob/master/app/Text.php
+
