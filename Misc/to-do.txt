@@ -1,4 +1,5 @@
 - Credits
-- Uncle Spoiler Test
-- Vanilla Test
 - Sort out the naming screen character order?
+- Uncle Spoiler Test
+- Vanilla Test (mode test all strings)
+- Standard Mode Test (mode test all strings)
