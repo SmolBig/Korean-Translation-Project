@@ -1,0 +1,16 @@
+Header Format:
+	Y = 0b00ABBBBB
+	X = 0b00CDDDDD
+	L = (strlen * 2) - 1
+	0b(0110ACBB)(BBBDDDDD)(00000000)(LLLLLLLL)
+
+@0x76924
+
+62 65 00 2B
+T  H  E  _  R  E  T  U  R  N  _  O  F  _  T  H  E  _  K  I  N  G
+2D 21 1E 9F 2B 1E 2D 2E 2B 27 9F 28 1F 9F 2D 21 1E 9F 24 22 27 20
+
+62 E9 00 19
+H  Y  R  U  L  E  _  C  A  S  T  L  E
+64 75 6E 71 68 61 9F 5F 5D 6F 70 68 61
+

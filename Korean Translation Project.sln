@@ -11,16 +11,31 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Translation Injector", "Tra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{80BCA77F-B81C-4AF7-97CA-4A4CFD6E9A0A}"
 	ProjectSection(SolutionItems) = preProject
-		Misc\japanese font.png = Misc\japanese font.png
-		LICENSE.md = LICENSE.md
-		Misc\menu addresses.txt = Misc\menu addresses.txt
 		Misc\project end-goals.txt = Misc\project end-goals.txt
-		README.md = README.md
-		Misc\reference code.txt = Misc\reference code.txt
-		Misc\special.png = Misc\special.png
-		Misc\standardized glyphs.txt = Misc\standardized glyphs.txt
-		Misc\String Table.xlsx = Misc\String Table.xlsx
 		Misc\to-do.txt = Misc\to-do.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Credits Stuff", "Credits Stuff", "{3E30EFBC-66E8-4758-870E-55A0783938F8}"
+	ProjectSection(SolutionItems) = preProject
+		Misc\Credits Stuff\credits notes.txt = Misc\Credits Stuff\credits notes.txt
+		Misc\Credits Stuff\lotr screen.png = Misc\Credits Stuff\lotr screen.png
+		Misc\Credits Stuff\VT Rando's Credits.php = Misc\Credits Stuff\VT Rando's Credits.php
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project Metadata", "Project Metadata", "{0318B307-3C29-4080-AAC0-12D971BFC20D}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference", "Reference", "{F349591A-E9A4-4A3B-AB43-B34F8F0B51BA}"
+	ProjectSection(SolutionItems) = preProject
+		Misc\Reference\japanese font.png = Misc\Reference\japanese font.png
+		Misc\Reference\menu addresses.txt = Misc\Reference\menu addresses.txt
+		Misc\Reference\special.png = Misc\Reference\special.png
+		Misc\Reference\standardized glyphs.txt = Misc\Reference\standardized glyphs.txt
+		Misc\Reference\String Table.xlsx = Misc\Reference\String Table.xlsx
+		Misc\Reference\vt code links.txt = Misc\Reference\vt code links.txt
 	EndProjectSection
 EndProject
 Global
@@ -44,6 +59,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E30EFBC-66E8-4758-870E-55A0783938F8} = {80BCA77F-B81C-4AF7-97CA-4A4CFD6E9A0A}
+		{0318B307-3C29-4080-AAC0-12D971BFC20D} = {80BCA77F-B81C-4AF7-97CA-4A4CFD6E9A0A}
+		{F349591A-E9A4-4A3B-AB43-B34F8F0B51BA} = {80BCA77F-B81C-4AF7-97CA-4A4CFD6E9A0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA0AE426-AD70-4E55-AB24-F78087838283}
