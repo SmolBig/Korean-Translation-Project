@@ -1,3 +1,3 @@
 @echo off
 cd Release
-KoreanTextInjector
+"Translation Injector"

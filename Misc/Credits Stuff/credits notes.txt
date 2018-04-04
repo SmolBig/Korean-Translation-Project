@@ -4,13 +4,17 @@ Header Format:
 	L = (strlen * 2) - 1
 	0b(0110ACBB)(BBBDDDDD)(00000000)(LLLLLLLL)
 
-@0x76924
+@0x181500
 
-62 65 00 2B
 T  H  E  _  R  E  T  U  R  N  _  O  F  _  T  H  E  _  K  I  N  G
+62 65 00 2B
 2D 21 1E 9F 2B 1E 2D 2E 2B 27 9F 28 1F 9F 2D 21 1E 9F 24 22 27 20
 
-62 E9 00 19
 H  Y  R  U  L  E  _  C  A  S  T  L  E
+62 E9 00 19
 64 75 6E 71 68 61 9F 5F 5D 6F 70 68 61
+63 09 00 19
+8A 9B 94 97 8E 87 9F 85 83 95 96 8E 87
 
+@0x76CC0
+"Wishes" Pointer Table

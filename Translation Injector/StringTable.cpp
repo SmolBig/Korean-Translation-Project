@@ -40,6 +40,10 @@ StringTable::StringTable(const std::string& fname) {
     throw std::runtime_error("StringTable::StringTable(file) - Incorrect low-bank line count");
   }
 
+  //~~@ disabling unused hi banks required in "low banks.txt" because it's silly
+  hiLines.resize(ROM::HIGH_BANK_LINE_CT);
+  return;
+
   while(file.good() && hiLines.size() < ROM::HIGH_BANK_LINE_CT) {
     std::wstring str;
     std::getline(file, str);
