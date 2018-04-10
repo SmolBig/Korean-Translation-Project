@@ -1,0 +1,31 @@
+font 070000(0E8000)
+copy 118f9c(23:8f9c)
+
+0e:f55b
+0x0007755B
+
+Karkat Function: (23:B34A)
+A9 02         load accumulator immediate (02)
+8D 01 21      store accumulator to memory absolute (2101)
+A9 80         load accumulator immediate (80)
+8D 15 21      store accumulator to memory absolute (2115)
+A9 XX         load accumulator immediate (XX)
+85 02         store accumulator to memory direct page (02)
+C2 30         Reset Processor Status Bits (30)
+A9 00 70      load accumulator immediate (7000)
+8D 16 21      store accumulator to memory absolute (2116)
+A9 ZZ YY      load accumulator immediate (YYZZ)
+85 00         store accumulator to memory direct page (00)
+
+Vanilla Function: (00:E596) [called from 02:857D]
+A9 02         load accumulator immediate (02)
+8D 01 21      store accumulator to memory absolute (2101)
+A9 80         load accumulator immediate (80)
+8D 15 21      store accumulator to memory absolute (2115)
+A9 7E         load accumulator immediate (7E)
+85 02         store accumulator to memory direct page (02)
+C2 30         Reset Processor Status Bits (30)
+A9 00 70      load accumulator immediate (7000)
+8D 16 21      store accumulator to memory absolute (2116)
+A9 00 20      load accumulator immediate (2000)
+85 00         store accumulator to memory direct page (00)

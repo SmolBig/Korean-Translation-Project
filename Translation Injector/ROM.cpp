@@ -43,6 +43,11 @@ void ROM::injectSaveMenu(const SaveMenu& menu) {
   }
 }
 
+void ROM::useAuxFontForWishes() {
+  auto dst = data.begin() + WISHES_FONT_CALL_OFFSET;
+  std::copy(std::begin(V29_KARKAT_FONT_LOAD_ADDR_BYTES), std::end(V29_KARKAT_FONT_LOAD_ADDR_BYTES), dst);
+}
+
 ROM::Type ROM::getType() const {
   return type;
 }

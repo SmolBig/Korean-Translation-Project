@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{80BCA77F-B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Credits Stuff", "Credits Stuff", "{3E30EFBC-66E8-4758-870E-55A0783938F8}"
 	ProjectSection(SolutionItems) = preProject
+		Misc\Credits Stuff\credfix.rb = Misc\Credits Stuff\credfix.rb
+		Misc\Credits Stuff\credits fix.txt = Misc\Credits Stuff\credits fix.txt
 		Misc\Credits Stuff\credits notes.txt = Misc\Credits Stuff\credits notes.txt
 		Misc\Credits Stuff\lotr screen.png = Misc\Credits Stuff\lotr screen.png
 		Misc\Credits Stuff\VT Rando's Credits.php = Misc\Credits Stuff\VT Rando's Credits.php

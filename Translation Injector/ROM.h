@@ -14,6 +14,7 @@ public:
   StringTable extractStringTable(const GlyphTable& glyphs) const;
   void injectStringTable(const GlyphTable& glyphs, const StringTable& table);
   void injectSaveMenu(const SaveMenu& menu);
+  void useAuxFontForWishes();
 
   enum class Type {
     NORMAL,
@@ -50,6 +51,9 @@ public:
   static constexpr size_t HIGH_BANK_STRIDE = 0x100;
   static constexpr size_t HIGH_BANK_LINE_CT = 16;
   static constexpr size_t HIGH_BANK_LENGTH = HIGH_BANK_STRIDE * HIGH_BANK_LINE_CT;
+
+  static constexpr size_t WISHES_FONT_CALL_OFFSET = 0x01057E;
+  static constexpr byte V29_KARKAT_FONT_LOAD_ADDR_BYTES[] = { 0x4A, 0xB3, 0x23 }; //~~@ find the address manually
 
 private:
   ByteArray data;

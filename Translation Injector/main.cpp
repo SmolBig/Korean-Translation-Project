@@ -33,7 +33,9 @@ int main() {
     menu.setString(SaveMenu::BankName::DELETE_MENU_CANCEL,  L"어 머 실 수");
     rom.injectSaveMenu(menu);
 
-    rom.saveAs("../KO test 16.sfc");
+    rom.useAuxFontForWishes();
+
+    rom.saveAs("../KO Beta 01.sfc");
 
 #ifdef NDEBUG
   } catch(const std::exception& e) { showErr(e); }
