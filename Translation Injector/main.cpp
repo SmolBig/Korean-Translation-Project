@@ -6,13 +6,15 @@
 #include "SaveMenu.h"
 
 void showErr(const std::exception& e);
+bool checkArgs(int argc, char** argv);
 
-int main() {
+int main(int argc, char** argv) {
 #ifdef NDEBUG
   try {
 #endif
+    if(checkArgs(argc, argv)) { return -1; }
 
-    ROM rom("../Data/fonted rando.sfc");
+    ROM rom(argv[1]);
     GlyphTable gt("../Data/glyph table.txt");
 
     Translator tl(gt, rom);
@@ -35,7 +37,7 @@ int main() {
 
     rom.useAuxFontForWishes();
 
-    rom.saveAs("../KO Vanilla Test 100.sfc");
+    rom.saveAs(argv[2]);
 
 #ifdef NDEBUG
   } catch(const std::exception& e) { showErr(e); }
@@ -46,5 +48,11 @@ int main() {
 
 void showErr(const std::exception& e) {
   MessageBoxA(0, e.what(), 0, 0);
+}
+
+bool checkArgs(int argc, char** argv) {
+  if(argc == 3) { return false; }
+  std::cout << "Usage:\n\tktrans [input rom] [output rom]\n\n";
+  return true;
 }
 

@@ -659,7 +659,7 @@ std::wstring Translator::invincible1Line() {
   static const std::wstring TRIFORCE_GOAL = L"[L2]트라이포스나 찾으러 가.";
   static const std::wstring POSTFIX = L"[END]";
 
-  auto line = romST[StringTable::HiBankIndex::GANON2];
+  auto line = romST[StringTable::HiBankIndex::GANON_INVINCIBLE1];
 
   std::wstringstream ss;
   ss << PREFIX;
