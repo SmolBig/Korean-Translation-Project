@@ -122,7 +122,7 @@ Bitmap getGlyph(uint16_t cc, const std::map<uint16_t, Bitmap>& tables) {
 }
 
 size_t getFontTexelOffset(size_t glyphIndex) {
-  //~~@
+  //~~@ magic numbers
   int row = glyphIndex / 32;
   int col = glyphIndex % 32;
 

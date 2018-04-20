@@ -35,7 +35,7 @@ int main() {
 
     rom.useAuxFontForWishes();
 
-    rom.saveAs("../KO Beta 01.sfc");
+    rom.saveAs("../KO Vanilla Test 100.sfc");
 
 #ifdef NDEBUG
   } catch(const std::exception& e) { showErr(e); }

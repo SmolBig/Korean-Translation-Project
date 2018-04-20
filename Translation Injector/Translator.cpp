@@ -604,7 +604,7 @@ std::wstring Translator::blindLine() {
 }
 
 std::wstring Translator::pyramidFairyLine() {
-  return L"[L1]PYRAMID FAIRY[END]";
+  return L"[L1]HEY![L2]LISTEN![END]";
 }
 
 std::wstring Translator::sahasralah1Line() {
@@ -614,7 +614,7 @@ std::wstring Translator::sahasralah1Line() {
 }
 
 std::wstring Translator::sahasralah2Line() {
-  return L"[L1]SAHASRALAH[L2]AFTER ITEM[L3]GIVEN[END]";
+  return L"[L1]그걸로 세상을 구하거라.[END]";
 }
 
 std::wstring Translator::tavernLine() {
@@ -642,7 +642,7 @@ std::wstring Translator::bombShop1Line() {
 }
 
 std::wstring Translator::bombShop2Line() {
-  return L"[L1]BOMB SHOP[L2]AFTER CRYSTALS[L3]COLLECTED[END]";
+  return L"[L1]폭탄 30개 100루피[L2]큰 폭탄 하나 100루피[END]";
 }
 
 std::wstring Translator::etherLine() {

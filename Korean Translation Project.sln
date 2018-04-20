@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{80BCA77F-B81C-4AF7-97CA-4A4CFD6E9A0A}"
 	ProjectSection(SolutionItems) = preProject
 		Misc\project end-goals.txt = Misc\project end-goals.txt
+		Misc\remaining lines.txt = Misc\remaining lines.txt
 		Misc\to-do.txt = Misc\to-do.txt
 	EndProjectSection
 EndProject
@@ -38,6 +39,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reference", "Reference", "{
 		Misc\Reference\standardized glyphs.txt = Misc\Reference\standardized glyphs.txt
 		Misc\Reference\String Table.xlsx = Misc\Reference\String Table.xlsx
 		Misc\Reference\vt code links.txt = Misc\Reference\vt code links.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F06138C7-9AEC-40A9-B879-B9387BBB2B76}"
+	ProjectSection(SolutionItems) = preProject
+		Data\glyph table.txt = Data\glyph table.txt
+		Data\hangul font.png = Data\hangul font.png
+		Data\low banks.txt = Data\low banks.txt
 	EndProjectSection
 EndProject
 Global

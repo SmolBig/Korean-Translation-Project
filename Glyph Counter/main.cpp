@@ -146,6 +146,7 @@ std::vector<std::pair<std::wstring, std::vector<uint8_t>>> createTable(std::map<
     { L"l",                       { 0xE3 } },
     { L"c",                       { 0xE4 } },
     { L"[PAGE]",                  { 0xF6 } },
+    { L"[L1]",                    { 0xF7 } },
     { L"[L2]",                    { 0xF8 } },
     { L"[L3]",                    { 0xF9 } },
     { L"[KEYWAIT]",               { 0xFA } },
@@ -249,6 +250,7 @@ std::wstringstream collectToStream(const std::string& lowBankFname, const std::s
 void generateTableFile(const std::string& lowBankFname, const std::string& hiBankFname, const std::string& saveMenuFname, const std::string& outFileName) {
   auto ss = collectToStream(lowBankFname, hiBankFname, saveMenuFname);
   auto glyphCount = doCount(ss);
+  
   auto data = createTable(glyphCount);
   auto outfile = genOutFile(outFileName);
   for(auto token : data) {
@@ -260,5 +262,6 @@ void generateTableFile(const std::string& lowBankFname, const std::string& hiBan
 
 int main(int argc, char* argv[]) {
   generateTableFile("../Data/low banks.txt", "../Data/high bank texts.txt", "../Data/save menu texts.txt", "../Data/glyph table.txt");
+
 }
 

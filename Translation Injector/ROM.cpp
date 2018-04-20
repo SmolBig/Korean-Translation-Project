@@ -102,7 +102,7 @@ void ROM::validateData() {
   if(type == Type::NORMAL) {
     a = data.begin() + VERSION_OFFSET;
     b = a + strlen(EXPECTED_VERSION);
-    //if(!std::equal(a, b, EXPECTED_VERSION)) { throw std::runtime_error("ROM::validateData() - Rando version mismatch."); } //~~!
+    if(!std::equal(a, b, EXPECTED_VERSION)) { throw std::runtime_error("ROM::validateData() - Rando version mismatch."); }
   }
 }
 

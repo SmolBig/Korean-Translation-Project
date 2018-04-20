@@ -35,7 +35,7 @@ public:
   static constexpr char NORMAL_STAMP_PREFIX[] = "VT";
   static constexpr byte HIROM_BYTE = 0x30;
   static constexpr size_t VERSION_OFFSET = 0x7FCC;
-  static constexpr char EXPECTED_VERSION[] = "028";
+  static constexpr char EXPECTED_VERSION[] = "029";
 
   static constexpr size_t NORMAL_SEED_OFFSET = STAMP_OFFSET + 3;
   static constexpr size_t NORMAL_SEED_LENGTH = 9;
