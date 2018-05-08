@@ -674,3 +674,154 @@ std::wstring Translator::invincible2Line() {
   return L"[L1]귀먹었냐? 난 안[L2]죽는다니까.[END]";
 }
 
+void Translator::keysanityFixup() {
+  //need to check buffer length on all of these
+
+  static const std::wstring FOUND_MAP       = L"[L2]의 나침반을[L3]찾았다![END]";
+  static const std::wstring FOUND_COMPASS   = L"[L2]의 큰 열쇠를[L3]찾았다![END]";
+  static const std::wstring FOUND_BIG_KEY   = L"[L2]의 작은 열쇠를[L3]찾았다![END]";
+  static const std::wstring FOUND_SMALL_KEY = L"[L2]의 지도를[L3]찾았다![END]";
+  static const std::wstring LIGHT_WORLD    = L"[L1]" + REGION_NAMES.at(Region::LIGHT_WORLD);
+  static const std::wstring DARK_WORLD     = L"[L1]" + REGION_NAMES.at(Region::DARK_WORLD);
+  static const std::wstring GANONS_TOWER   = L"[L1]" + REGION_NAMES.at(Region::GANONS_TOWER);
+  static const std::wstring TURTLE_ROCK    = L"[L1]" + REGION_NAMES.at(Region::TURTLE_ROCK);
+  static const std::wstring THIEVES_TOWN   = L"[L1]" + REGION_NAMES.at(Region::THIEVES_TOWN);
+  static const std::wstring TOWER_OF_HERA  = L"[L1]" + REGION_NAMES.at(Region::TOWER_OF_HERA);
+  static const std::wstring ICE_PALACE     = L"[L1]" + REGION_NAMES.at(Region::ICE_PALACE);
+  static const std::wstring SKULL_WOODS    = L"[L1]" + REGION_NAMES.at(Region::SKULL_WOODS);
+  static const std::wstring MISERY_MIRE    = L"[L1]" + REGION_NAMES.at(Region::MISERY_MIRE);
+  static const std::wstring DARK_PALACE    = L"[L1]" + REGION_NAMES.at(Region::PALACE_OF_DARKNESS);
+  static const std::wstring SWAMP_PALACE   = L"[L1]" + REGION_NAMES.at(Region::SWAMP_PALACE);
+  static const std::wstring CASTLE_TOWER   = L"[L1]" + REGION_NAMES.at(Region::AGAHNIMS_TOWER);
+  static const std::wstring DESERT_PALACE  = L"[L1]" + REGION_NAMES.at(Region::DESERT_PALACE);
+  static const std::wstring EASTERN_PALACE = L"[L1]" + REGION_NAMES.at(Region::EASTERN_PALACE);
+  static const std::wstring HYRULE_CASTLE  = L"[L1]" + REGION_NAMES.at(Region::HYRULE_CASTLE);
+  static const std::wstring CURRENT_DUNGEON = L"[L1]이 던전";
+  /*
+  Below is a temporary copy of Karkat's ASM from https://github.com/mmxbass/z3randomizer/blob/master/itemtext.asm. It's licensed as follows:
+
+  Copyright 2016, 2017 Equilateral IT
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTR
+
+  org $328000
+  ; You have found
+  ; the map of
+  Notice_MapOf:
+  db $74, $00, $C2, $00, $B8, $00, $BE, $00, $FF, $00, $B1, $00, $AA, $00, $BF, $00, $AE, $00, $FF, $00, $AF, $00, $B8, $00, $BE, $00, $B7, $00, $AD
+  db $75, $00, $BD, $00, $B1, $00, $AE, $00, $FF, $00, $B6, $00, $AA, $00, $B9, $00, $FF, $00, $B8, $00, $AF
+  dw #$7F7F
+
+  ; You have found
+  ; the compass of
+  Notice_CompassOf:
+  db $74, $00, $C2, $00, $B8, $00, $BE, $00, $FF, $00, $B1, $00, $AA, $00, $BF, $00, $AE, $00, $FF, $00, $AF, $00, $B8, $00, $BE, $00, $B7, $00, $AD
+  db $75, $00, $BD, $00, $B1, $00, $AE, $00, $FF, $00, $AC, $00, $B8, $00, $B6, $00, $B9, $00, $AA, $00, $BC, $00, $BC, $00, $FF, $00, $B8, $00, $AF
+  dw #$7F7F
+
+  ; Oh look! it's
+  ; the big key of
+  Notice_BigKeyOf:
+  db $74, $00, $B8, $00, $B1, $00, $FF, $00, $B5, $00, $B8, $00, $B8, $00, $B4, $00, $C7, $00, $FF, $00, $B2, $00, $BD, $00, $D8, $00, $BC
+  db $75, $00, $BD, $00, $B1, $00, $AE, $00, $FF, $00, $AB, $00, $B2, $00, $B0, $00, $FF, $00, $B4, $00, $AE, $00, $C2, $00, $FF, $00, $B8, $00, $AF
+  dw #$7F7F
+
+  ; this is a
+  ; small key to
+  Notice_SmallKeyOf:
+  db $74, $00, $BD, $00, $B1, $00, $B2, $00, $BC, $00, $FF, $00, $B2, $00, $BC, $00, $FF, $00, $AA
+  db $75, $00, $BC, $00, $B6, $00, $AA, $00, $B5, $00, $B5, $00, $FF, $00, $B4, $00, $AE, $00, $C2, $00, $FF, $00, $BD, $00, $B8
+  dw #$7F7F
+
+  ; light world
+  Notice_LightWorld:
+  db $76, $00, $B5, $00, $B2, $00, $B0, $00, $B1, $00, $BD, $00, $FF, $00, $C0, $00, $B8, $00, $BB, $00, $B5, $00, $AD
+  dw #$7F7F
+
+  ; dark world
+  Notice_DarkWorld:
+  db $76, $00, $AD, $00, $AA, $00, $BB, $00, $B4, $00, $FF, $00, $C0, $00, $B8, $00, $BB, $00, $B5, $00, $AD
+  dw #$7F7F
+
+  ; Ganons Tower
+  Notice_GTower:
+  db $76, $00, $B0, $00, $AA, $00, $B7, $00, $B8, $00, $B7, $00, $BC, $00, $FF, $00, $BD, $00, $B8, $00, $C0, $00, $AE, $00, $BB
+  dw #$7F7F
+
+  ; Turtle Rock
+  Notice_TRock:
+  db $76, $00, $BD, $00, $BE, $00, $BB, $00, $BD, $00, $B5, $00, $AE, $00, $FF, $00, $BB, $00, $B8, $00, $AC, $00, $B4
+  dw #$7F7F
+
+  ; Thieves Town
+  Notice_Thieves:
+  db $76, $00, $BD, $00, $B1, $00, $B2, $00, $AE, $00, $BF, $00, $AE, $00, $BC, $00, $FF, $00, $BD, $00, $B8, $00, $C0, $00, $B7
+  dw #$7F7F
+
+  ; Tower of Hera
+  Notice_Hera:
+  db $76, $00, $BD, $00, $B8, $00, $C0, $00, $AE, $00, $BB, $00, $FF, $00, $B8, $00, $AF, $00, $FF, $00, $B1, $00, $AE, $00, $BB, $00, $AA
+  dw #$7F7F
+
+  ; Ice Palace
+  Notice_Ice:
+  db $76, $00, $B2, $00, $AC, $00, $AE, $00, $FF, $00, $B9, $00, $AA, $00, $B5, $00, $AA, $00, $AC, $00, $AE
+  dw #$7F7F
+
+  ; Skull Woods
+  Notice_Skull:
+  db $76, $00, $BC, $00, $B4, $00, $BE, $00, $B5, $00, $B5, $00, $FF, $00, $C0, $00, $B8, $00, $B8, $00, $AD, $00, $BC
+  dw #$7F7F
+
+  ; Misery Mire
+  Notice_Mire:
+  db $76, $00, $B6, $00, $B2, $00, $BC, $00, $AE, $00, $BB, $00, $C2, $00, $FF, $00, $B6, $00, $B2, $00, $BB, $00, $AE
+  dw #$7F7F
+
+  ; Dark Palace
+  Notice_PoD:
+  db $76, $00, $AD, $00, $AA, $00, $BB, $00, $B4, $00, $FF, $00, $B9, $00, $AA, $00, $B5, $00, $AA, $00, $AC, $00, $AE
+  dw #$7F7F
+
+  ; Swamp Palace
+  Notice_Swamp:
+  db $76, $00, $BC, $00, $C0, $00, $AA, $00, $B6, $00, $B9, $00, $FF, $00, $B9, $00, $AA, $00, $B5, $00, $AA, $00, $AC, $00, $AE
+  dw #$7F7F
+
+  ; Castle Tower
+  Notice_AgaTower:
+  db $76, $00, $AC, $00, $AA, $00, $BC, $00, $BD, $00, $B5, $00, $AE, $00, $FF, $00, $BD, $00, $B8, $00, $C0, $00, $AE, $00, $BB
+  dw #$7F7F
+
+  ; Desert Palace
+  Notice_Desert:
+  db $76, $00, $AD, $00, $AE, $00, $BC, $00, $AE, $00, $BB, $00, $BD, $00, $FF, $00, $B9, $00, $AA, $00, $B5, $00, $AA, $00, $AC, $00, $AE
+  dw #$7F7F
+
+  ; Eastern Palace
+  Notice_Eastern:
+  db $76, $00, $AE, $00, $AA, $00, $BC, $00, $BD, $00, $AE, $00, $BB, $00, $B7, $00, $FF, $00, $B9, $00, $AA, $00, $B5, $00, $AA, $00, $AC, $00, $AE
+  dw #$7F7F
+
+  ; Hyrule Castle
+  Notice_Castle:
+  db $76, $00, $B1, $00, $C2, $00, $BB, $00, $BE, $00, $B5, $00, $AE, $00, $FF, $00, $AC, $00, $AA, $00, $BC, $00, $BD, $00, $B5, $00, $AE
+  dw #$7F7F
+
+  ; Hyrule Castle
+  Notice_Sewers:
+  db $76, $00, $B1, $00, $C2, $00, $BB, $00, $BE, $00, $B5, $00, $AE, $00, $FF, $00, $AC, $00, $AA, $00, $BC, $00, $BD, $00, $B5, $00, $AE
+  dw #$7F7F
+
+
+  ; This Dungeon
+  Notice_Self:
+  db $76, $00, $BD, $00, $B1, $00, $B2, $00, $BC, $00, $FF, $00, $AD, $00, $BE, $00, $B7, $00, $B0, $00, $AE, $00, $B8, $00, $B7
+  dw #$7F7F
+  */
+}
+

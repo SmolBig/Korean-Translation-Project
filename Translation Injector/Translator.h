@@ -251,5 +251,7 @@ private:
   std::wstring invincible1Line();
   std::wstring invincible2Line();
 
+  void keysanityFixup();
+
 };
 

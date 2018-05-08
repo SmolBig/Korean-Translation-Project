@@ -7,3 +7,4 @@ https://github.com/SmolBig/alttp_vt_randomizer/blob/master/app/Rom.php
 
 https://github.com/SmolBig/alttp_vt_randomizer/blob/master/app/Text.php
 
+https://github.com/mmxbass/z3randomizer/blob/master/itemtext.asm
