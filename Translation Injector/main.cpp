@@ -37,6 +37,8 @@ int main(int argc, char** argv) {
 
     rom.useAuxFontForWishes();
 
+    tl.keysanityFixup(rom, gt);
+
     rom.saveAs(argv[2]);
 
 #ifdef NDEBUG

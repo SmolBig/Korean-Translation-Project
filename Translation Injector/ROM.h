@@ -55,7 +55,7 @@ public:
   static constexpr size_t WISHES_FONT_CALL_OFFSET = 0x01057E;
   static constexpr byte V29_KARKAT_FONT_LOAD_ADDR_BYTES[] = { 0x4A, 0xB3, 0x23 }; //~~@ find the address manually
 
-private:
+//private:
   ByteArray data;
   std::string seed;
   Type type;

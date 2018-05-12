@@ -674,29 +674,68 @@ std::wstring Translator::invincible2Line() {
   return L"[L1]귀먹었냐? 난 안[L2]죽는다니까.[END]";
 }
 
-void Translator::keysanityFixup() {
-  //need to check buffer length on all of these
+void appendy(const std::wstring& str, ByteArray& block, const GlyphTable& gt) {
+  static const ByteArray split{ 0x7F, 0x7F };
 
-  static const std::wstring FOUND_MAP       = L"[L2]의 나침반을[L3]찾았다![END]";
-  static const std::wstring FOUND_COMPASS   = L"[L2]의 큰 열쇠를[L3]찾았다![END]";
-  static const std::wstring FOUND_BIG_KEY   = L"[L2]의 작은 열쇠를[L3]찾았다![END]";
-  static const std::wstring FOUND_SMALL_KEY = L"[L2]의 지도를[L3]찾았다![END]";
-  static const std::wstring LIGHT_WORLD    = L"[L1]" + REGION_NAMES.at(Region::LIGHT_WORLD);
-  static const std::wstring DARK_WORLD     = L"[L1]" + REGION_NAMES.at(Region::DARK_WORLD);
-  static const std::wstring GANONS_TOWER   = L"[L1]" + REGION_NAMES.at(Region::GANONS_TOWER);
-  static const std::wstring TURTLE_ROCK    = L"[L1]" + REGION_NAMES.at(Region::TURTLE_ROCK);
-  static const std::wstring THIEVES_TOWN   = L"[L1]" + REGION_NAMES.at(Region::THIEVES_TOWN);
-  static const std::wstring TOWER_OF_HERA  = L"[L1]" + REGION_NAMES.at(Region::TOWER_OF_HERA);
-  static const std::wstring ICE_PALACE     = L"[L1]" + REGION_NAMES.at(Region::ICE_PALACE);
-  static const std::wstring SKULL_WOODS    = L"[L1]" + REGION_NAMES.at(Region::SKULL_WOODS);
-  static const std::wstring MISERY_MIRE    = L"[L1]" + REGION_NAMES.at(Region::MISERY_MIRE);
-  static const std::wstring DARK_PALACE    = L"[L1]" + REGION_NAMES.at(Region::PALACE_OF_DARKNESS);
-  static const std::wstring SWAMP_PALACE   = L"[L1]" + REGION_NAMES.at(Region::SWAMP_PALACE);
-  static const std::wstring CASTLE_TOWER   = L"[L1]" + REGION_NAMES.at(Region::AGAHNIMS_TOWER);
-  static const std::wstring DESERT_PALACE  = L"[L1]" + REGION_NAMES.at(Region::DESERT_PALACE);
-  static const std::wstring EASTERN_PALACE = L"[L1]" + REGION_NAMES.at(Region::EASTERN_PALACE);
-  static const std::wstring HYRULE_CASTLE  = L"[L1]" + REGION_NAMES.at(Region::HYRULE_CASTLE);
-  static const std::wstring CURRENT_DUNGEON = L"[L1]이 던전";
+  std::wstringstream ss;
+  ss << str;
+  while(ss.good()) {
+    auto bytes = gt.translateHiToken(ss);
+    block.insert(block.end(), bytes.begin(), bytes.end());
+  }
+  block.insert(block.end(), split.begin(), split.end());
+}
+
+void Translator::keysanityFixup(ROM& rom, const GlyphTable& gt) {
+  //need to check buffer length on all of these
+  //note: buffer lengths appear fixed.
+
+  static const std::wstring FOUND_MAP       = L"[L2]의 나침반을        [L3]찾았다!      ";
+  static const std::wstring FOUND_COMPASS   = L"[L2]의 큰 열쇠를       [L3]찾았다!          ";
+  static const std::wstring FOUND_BIG_KEY   = L"[L2]의 작은 열쇠를     [L3]찾았다!          ";
+  static const std::wstring FOUND_SMALL_KEY = L"[L2]의 지도를    [L3]찾았다!        ";
+  static const std::wstring LIGHT_WORLD    = L"[L1]빛의 세계      ";
+  static const std::wstring DARK_WORLD     = L"[L1]어둠의 세계    ";
+  static const std::wstring GANONS_TOWER   = L"[L1]가논의 탑       ";
+  static const std::wstring TURTLE_ROCK    = L"[L1]거북바위       ";
+  static const std::wstring THIEVES_TOWN   = L"[L1]버려진 자들의 아지트 ";
+  static const std::wstring TOWER_OF_HERA  = L"[L1]헤라의 탑        ";
+  static const std::wstring ICE_PALACE     = L"[L1]얼음의 신전    ";
+  static const std::wstring SKULL_WOODS    = L"[L1]해골 숲       ";
+  static const std::wstring MISERY_MIRE    = L"[L1]절망의 수렁     ";
+  static const std::wstring DARK_PALACE    = L"[L1]어둠의 신전     ";
+  static const std::wstring SWAMP_PALACE   = L"[L1]물의 신전       ";
+  static const std::wstring CASTLE_TOWER   = L"[L1]하이랄 성 탑     ";
+  static const std::wstring DESERT_PALACE  = L"[L1]사막의 신전       ";
+  static const std::wstring EASTERN_PALACE = L"[L1]동쪽 신전         ";
+  static const std::wstring HYRULE_CASTLE  = L"[L1]하이랄 성        ";
+  static const std::wstring CURRENT_DUNGEON = L"[L1]이 던전        ";
+
+  ByteArray block;
+  block.reserve(1000);
+  appendy(FOUND_MAP, block, gt);
+  appendy(FOUND_COMPASS, block, gt);
+  appendy(FOUND_BIG_KEY, block, gt);
+  appendy(FOUND_SMALL_KEY, block, gt);
+  appendy(LIGHT_WORLD, block, gt);
+  appendy(DARK_WORLD, block, gt);
+  appendy(GANONS_TOWER, block, gt);
+  appendy(TURTLE_ROCK, block, gt);
+  appendy(THIEVES_TOWN, block, gt);
+  appendy(TOWER_OF_HERA, block, gt);
+  appendy(ICE_PALACE, block, gt);
+  appendy(SKULL_WOODS, block, gt);
+  appendy(MISERY_MIRE, block, gt);
+  appendy(DARK_PALACE, block, gt);
+  appendy(SWAMP_PALACE, block, gt);
+  appendy(CASTLE_TOWER, block, gt);
+  appendy(DESERT_PALACE, block, gt);
+  appendy(EASTERN_PALACE, block, gt);
+  appendy(HYRULE_CASTLE, block, gt);
+  appendy(CURRENT_DUNGEON, block, gt);
+
+  rom.inject(block, 0x190000);
+
   /*
   Below is a temporary copy of Karkat's ASM from https://github.com/mmxbass/z3randomizer/blob/master/itemtext.asm. It's licensed as follows:
 
@@ -816,7 +855,6 @@ void Translator::keysanityFixup() {
   Notice_Sewers:
   db $76, $00, $B1, $00, $C2, $00, $BB, $00, $BE, $00, $B5, $00, $AE, $00, $FF, $00, $AC, $00, $AA, $00, $BC, $00, $BD, $00, $B5, $00, $AE
   dw #$7F7F
-
 
   ; This Dungeon
   Notice_Self:
