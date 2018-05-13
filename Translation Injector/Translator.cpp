@@ -690,10 +690,10 @@ void Translator::keysanityFixup(ROM& rom, const GlyphTable& gt) {
   //need to check buffer length on all of these
   //note: buffer lengths appear fixed.
 
-  static const std::wstring FOUND_MAP       = L"[L2]의 나침반을        [L3]찾았다!      ";
-  static const std::wstring FOUND_COMPASS   = L"[L2]의 큰 열쇠를       [L3]찾았다!          ";
-  static const std::wstring FOUND_BIG_KEY   = L"[L2]의 작은 열쇠를     [L3]찾았다!          ";
-  static const std::wstring FOUND_SMALL_KEY = L"[L2]의 지도를    [L3]찾았다!        ";
+  static const std::wstring FOUND_MAP       = L"[L2]의 지도를         [L3]찾았다!      ";
+  static const std::wstring FOUND_COMPASS   = L"[L2]의 나침반을        [L3]찾았다!          ";
+  static const std::wstring FOUND_BIG_KEY   = L"[L2]의 큰 열쇠를      [L3]찾았다!          ";
+  static const std::wstring FOUND_SMALL_KEY = L"[L2]의 작은 열쇠를 [L3]찾았다!        ";
   static const std::wstring LIGHT_WORLD    = L"[L1]빛의 세계      ";
   static const std::wstring DARK_WORLD     = L"[L1]어둠의 세계    ";
   static const std::wstring GANONS_TOWER   = L"[L1]가논의 탑       ";
@@ -731,6 +731,7 @@ void Translator::keysanityFixup(ROM& rom, const GlyphTable& gt) {
   appendy(CASTLE_TOWER, block, gt);
   appendy(DESERT_PALACE, block, gt);
   appendy(EASTERN_PALACE, block, gt);
+  appendy(HYRULE_CASTLE, block, gt);
   appendy(HYRULE_CASTLE, block, gt);
   appendy(CURRENT_DUNGEON, block, gt);
 

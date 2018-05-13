@@ -12,9 +12,11 @@ int main(int argc, char** argv) {
 #ifdef NDEBUG
   try {
 #endif
-    if(checkArgs(argc, argv)) { return -1; }
+    //if(checkArgs(argc, argv)) { return -1; }
 
-    ROM rom(argv[1]);
+    //ROM rom(argv[1]);
+    ROM rom("../Data/fonted rando.sfc");
+
     GlyphTable gt("../Data/glyph table.txt");
 
     Translator tl(gt, rom);
@@ -39,7 +41,8 @@ int main(int argc, char** argv) {
 
     tl.keysanityFixup(rom, gt);
 
-    rom.saveAs(argv[2]);
+    //rom.saveAs(argv[2]);
+    rom.saveAs("../derp.sfc");
 
 #ifdef NDEBUG
   } catch(const std::exception& e) { showErr(e); }
